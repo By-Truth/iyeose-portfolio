@@ -28,11 +28,7 @@ The build outputs static files to `dist/`.
 
 The `backend/` folder is a separate PHP application — it deploys
 independently of the React site (it needs an actual PHP host; the frontend
-doesn't). Full setup instructions: **[`BACKEND_SETUP.md`](BACKEND_SETUP.md)**.
-
-Deploying both to Hostinger specifically (same host for frontend + backend)?
-Follow **[`DEPLOY_HOSTINGER.md`](DEPLOY_HOSTINGER.md)** instead — it's a full
-step-by-step walkthrough.
+doesn't). 
 
 Until the backend is configured (`VITE_API_URL` set in `.env`), the site
 works exactly as a static site: content comes from `src/data.js` and the
