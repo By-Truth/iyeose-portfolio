@@ -1,0 +1,18 @@
+# Re-open access to the API entry points that backend/.htaccess denies by default.
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+</IfModule>
+
+# Many shared hosts (Apache/LiteSpeed with php-cgi) strip the Authorization
+# header before PHP ever sees it. This forwards it through so admin login
+# tokens actually reach lib/auth.php — harmless if your host already passes
+# it through.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteCond %{HTTP:Authorization} ^(.*)
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%1]
+</IfModule>

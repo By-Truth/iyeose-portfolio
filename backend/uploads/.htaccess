@@ -1,0 +1,19 @@
+# Re-open access so uploaded images are actually viewable — backend/.htaccess
+# denies everything else in /backend by default.
+<IfModule mod_authz_core.c>
+    Require all granted
+</IfModule>
+<IfModule !mod_authz_core.c>
+    Order allow,deny
+    Allow from all
+</IfModule>
+
+# Don't let uploaded files execute as PHP even if someone smuggles a .php extension in.
+<FilesMatch "\.(php|phtml|php\d)$">
+    <IfModule mod_authz_core.c>
+        Require all denied
+    </IfModule>
+    <IfModule !mod_authz_core.c>
+        Deny from all
+    </IfModule>
+</FilesMatch>

@@ -1,0 +1,11 @@
+# Serves index.html for any path that isn't a real file, so React Router's
+# client-side routes (/admin, /admin/login) work on a direct visit or a page
+# refresh, not just when navigated to from within the app.
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    RewriteCond %{REQUEST_FILENAME} -f [OR]
+    RewriteCond %{REQUEST_FILENAME} -d
+    RewriteRule ^ - [L]
+    RewriteRule ^ index.html [L]
+</IfModule>

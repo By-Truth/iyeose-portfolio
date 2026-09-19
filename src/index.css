@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  /* Palette: black, white, gold and gray only — keep gold muted, never neon. */
+  --color-ink: #0a0a0a;
+  --color-panel: #131313;
+  --color-panel-2: #1a1a1a;
+  --color-line: #2b2b2b;
+  --color-paper: #f2f1ee;
+  --color-muted: #93918c;
+  --color-gold: #b8975f;
+  --color-gold-soft: #d3bd93;
+}
+
+/*
+ * Day / night theme.
+ * :root above holds the dark ("night") palette by default. A manual toggle
+ * (see ThemeToggle.jsx) sets data-theme="light" or "dark" on <html> and
+ * persists the choice to localStorage; until a choice is made, the system
+ * color-scheme preference decides. Every Tailwind color utility reads these
+ * as CSS variables, so redefining them here re-themes the whole site.
+ */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --color-ink: #f7f6f2;
+    --color-panel: #ffffff;
+    --color-panel-2: #efeee8;
+    --color-line: #e1dfd7;
+    --color-paper: #17171a;
+    --color-muted: #6b6a65;
+    --color-gold: #9c7a42;
+    --color-gold-soft: #7d5f30;
+  }
+}
+
+:root[data-theme="light"] {
+  --color-ink: #f7f6f2;
+  --color-panel: #ffffff;
+  --color-panel-2: #efeee8;
+  --color-line: #e1dfd7;
+  --color-paper: #17171a;
+  --color-muted: #6b6a65;
+  --color-gold: #9c7a42;
+  --color-gold-soft: #7d5f30;
+}
+
+html {
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+}
+
+body {
+  background-color: var(--color-ink);
+  color: var(--color-paper);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+::selection {
+  background-color: var(--color-gold);
+  color: var(--color-ink);
+}
+
+.blueprint-grid {
+  background-image:
+    linear-gradient(rgba(147, 145, 140, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 145, 140, 0.16) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.blueprint-grid-fine {
+  background-image:
+    linear-gradient(rgba(147, 145, 140, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(147, 145, 140, 0.08) 1px, transparent 1px);
+  background-size: 8px 8px;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.mask-fade-b {
+  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+@keyframes draw-line {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-draw {
+  stroke-dasharray: 1000;
+  animation: draw-line 2.2s ease-out forwards;
+}

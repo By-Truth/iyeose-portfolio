@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!--
+      Favicon: an "AD" monogram cropped from the logo, in gold on black. To
+      change it, replace /public/favicon.png and /public/apple-touch-icon.png
+      with your own images and keep the filenames. See also src/data.js ->
+      siteConfig for the nav logo.
+    -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Iyeose Simon Uhumuavbi — Data Scientist specializing in predictive analytics, machine learning and MLOps. Formerly an architect, now building data-driven systems." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <title>Iyeose Uhumuavbi — Data Scientist</title>
+    <script>
+      // Apply the saved/system theme before first paint to avoid a flash of the wrong one.
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          var theme = stored || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+          document.documentElement.dataset.theme = theme;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
